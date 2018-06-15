@@ -1,1 +1,6 @@
-{{outlet}}
+<div class="container text-center">
+    <div class="thumbnail-wrap center-block">
+      {{thumbnail-elem (concat '/' model.profileImg) model.type}}
+      <h3>{{model.name}}</h3>
+    </div>
+</div>
