@@ -29,11 +29,16 @@ export default Route.extend({
       this.transitionTo('sightings');
     },
     didMakeWitnessSelection(value) {
-      this.get('sighting').set('witnesses', value);
+      if(value){
+        this.get('sighting').witnesses.addObject(value);
+      }
     },
     didMakeCryptidSelection(value) {
       console.log(value);
       this.get('sighting').set('cryptid', value);
+    },
+    removeWitness(value) {
+      this.get('sighting').witnesses.removeObject(value);
     }
   }
 });

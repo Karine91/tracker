@@ -9,9 +9,23 @@
       {{/each}}
     {{/x-select}}
   </div>
+  <table class="table" width="100%">
+    <tbody>
+    {{#each model.sighting.witnesses as |witness|}}
+      <tr class="witnesses-row">
+        <td width="80%">
+          {{witness.fullName}}
+        </td>
+        <td width="20%" class="text-right">
+          <button {{action "removeWitness" witness}} type="button" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
   <div class="form-group">
     <label>Witnesses</label>
-    {{#x-select value=model.sighting.witnesses action="didMakeWitnessSelection" on="change" multiple=true class="form-control" as |xs| }}
+    {{#x-select action="didMakeWitnessSelection" on="change" class="form-control" as |xs| }}
       {{#xs.option}}Select Witnesses{{/xs.option}}
       {{#each model.witnesses as |witness|}}
         {{#xs.option value=witness}}{{witness.fullName}}{{/xs.option}}
