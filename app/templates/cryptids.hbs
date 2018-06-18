@@ -1,14 +1,9 @@
 <div class="row">
   {{#each model as |cryptid|}}
     <div class="col-xs-12 col-sm-3 text-center">
-      <div class="media well">
-        {{#link-to 'cryptid' cryptid.id title=cryptid.name}}
-          {{thumbnail-elem cryptid.profileImg cryptid.name}}
-        {{/link-to}}
-        <div class="caption">
-          <h3>{{cryptid.name}}</h3>
-        </div>
-      </div>
+      {{#link-to 'cryptid' cryptid.id}}
+        {{listing-item imagePath=cryptid.profileImg name=cryptid.name}}
+      {{/link-to}}
     </div>
     {{else}}
       <div class="jumbotron">

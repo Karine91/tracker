@@ -19,9 +19,9 @@ export default Route.extend({
       }
     },
     create() {
-      console.log(this.get('sighting').sightedAt);
-      this.get('sighting').save().then(() => {
-        // this.transitionTo('sightings');
+      this.get('sighting').save().then((data) => {
+        this.send('flash', {alertType: "success", message: "New sighting."});
+        this.transitionTo('sightings');
       });
     },
     cancel(){
@@ -34,7 +34,6 @@ export default Route.extend({
       }
     },
     didMakeCryptidSelection(value) {
-      console.log(value);
       this.get('sighting').set('cryptid', value);
     },
     removeWitness(value) {

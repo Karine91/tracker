@@ -1,24 +1,21 @@
 <div class="row">
   {{#each model as |sighting|}}
     <div class="col-xs-12 col-sm-3 text-center">
-      <div class="media well">
-        {{#link-to 'sighting' sighting.id}}
-          {{thumbnail-elem sighting.cryptid.profileImg sighting.cryptid.name}}
-          <div class="caption">
-            <h3>{{sighting.cryptid.name}}</h3>
-            {{#if sighting.location}}
-              <h3>{{sighting.location}}</h3>
-              <p>{{moment-from sighting.sightedAt}}</p>
-            {{else}}
-              <h3 class="text-danger">Bogus Sighting</h3>
-            {{/if}}
-          </div>
-        {{/link-to}}
-        {{#link-to 'sighting.edit' sighting.id tagName="button"
-          class="btn btn-success btn-block"}}
-          Edit
-        {{/link-to}}
-      </div>
+      {{#link-to 'sighting' sighting.id}}
+        {{#listing-item imagePath=sighting.cryptid.profileImg
+          name=sighting.cryptid.name}}
+          {{#if sighting.location}}
+            <h3>{{sighting.location}}</h3>
+            <p>{{moment-from sighting.sightedAt}}</p>
+          {{else}}
+            <h3 class="text-danger">Bogus Sighting</h3>
+          {{/if}}
+          {{#link-to 'sighting.edit' sighting.id tagName="button"
+            class="btn btn-success btn-block"}}
+            Edit
+          {{/link-to}}
+        {{/listing-item}}
+      {{/link-to}}
     </div>
   {{/each}}
 </div>
